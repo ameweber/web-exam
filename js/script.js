@@ -17,7 +17,7 @@ async function cafesParser() {
             '                <td>'+ cafes['typeObject'] +'</td>\n' +
             '                <td>'+ cafes['address'] +'</td>\n' +
             '                <td class="float-right">\n' +
-            '                    <button type="submit" class="btn btn-success px-5" id="'+ cafes['id'] +'">Выбрать</button>\n' +
+            '                    <button type="submit" class="btn bg-button text-white px-5" id="'+ cafes['id'] +'">Выбрать</button>\n' +
             '                </td>\n' +
             '            </tr>'
         );
