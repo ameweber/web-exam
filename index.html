@@ -15,7 +15,7 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-white bg-white">
         <a class="navbar-brand" href="#">
-            <img src="img/bakery-logo.svg" width="100" height="100" alt="" loading="lazy">
+            <img src="img/bakery-logo.svg" width="190"  alt="" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,10 +23,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="nav navbar-nav ml-auto">
-                <a class="nav-item nav-link active" href="#">Преимущества <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Адреса</a>
-                <a class="nav-item nav-link" href="#">Меню</a>
-                <a class="nav-item nav-link" href="#">Контакты</a>
+                <a class="nav-item nav-link text-dark" href="#">Преимущества <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link text-dark" href="#">Адреса</a>
+                <a class="nav-item nav-link text-dark" href="#">Меню</a>
+                <a class="nav-item nav-link text-dark" href="#">Контакты</a>
 
             </div>
         </div>
@@ -159,31 +159,8 @@
                 <th class="float-right" scope="col">Действие</th>
             </tr>
             </thead>
-            <tbody>
-            <tr class="border-bottom">
-                <th scope="row">Столовая МТУСИ</th>
-                <td>Столовая</td>
-                <td>г. Москва, ул. Авиамоторная, 12</td>
-                <td class="float-right">
-                    <button type="submit" class="btn btn-success px-5">Выбрать</button>
-                </td>
-            </tr>
-            <tr class="border-bottom">
-                <th scope="row">Столовая МТУСИ</th>
-                <td>Столовая</td>
-                <td>г. Москва, ул. Авиамоторная, 12</td>
-                <td class="float-right">
-                    <button type="submit" class="btn btn-success px-5">Выбрать</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">Столовая МТУСИ</th>
-                <td>Столовая</td>
-                <td>г. Москва, ул. Авиамоторная, 12</td>
-                <td class="float-right">
-                    <button type="submit" class="btn btn-success px-5">Выбрать</button>
-                </td>
-            </tr>
+            <tbody id="cafes">
+
             </tbody>
         </table>
 
@@ -214,8 +191,8 @@
             <div class="col-sm text-center mr-3 mt-1 shadow p-3 mb-5 bg-white rounded">
                 <img width="310" src="img/профитроли.jpg" class="rounded">
                 <h4 class="mt-3"><strong> Профитроли </strong></h4>
-                <h7 class="mt-2 p-3"> Авторские профитроли с заварным кремом</h7>
-                <h4 class="mt-3 "><strong> 200 ₽ </strong></h4>
+                <h7 class="mt-2 p-3"> Авторские профитроли с кремом</h7>
+                <h4 class="mt-3 "><strong> 200 ₽ </strong> </h4>
 
                 <div class="mx-auto mt-4 mb-3 def-number-input number-input safari_only">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
@@ -227,10 +204,10 @@
 
             </div>
             <div class="col-sm text-center mr-3 mt-1 shadow p-3 mb-5 bg-white rounded">
-                <img width="310" src="img/профитроли.jpg" class="rounded">
-                <h4 class="mt-3"><strong> Профитроли </strong></h4>
-                <h7 class="mt-2 p-3"> Авторские профитроли с заварным кремом</h7>
-                <h4 class="mt-3 "><strong> 200 ₽ </strong></h4>
+                <img width="310" src="img/маффины.jpg" class="rounded">
+                <h4 class="mt-3"><strong> Маффины </strong></h4>
+                <h7 class="mt-2 p-3"> Шоколадные маффины в глазури</h7>
+                <h4 class="mt-3 "><strong> 560 ₽ </strong></h4>
 
                 <div class="mx-auto mt-4 mb-3 def-number-input number-input safari_only">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
@@ -242,9 +219,9 @@
 
             </div>
             <div class="col-sm text-center mr-3 mt-1 shadow p-3 mb-5 bg-white rounded">
-                <img width="310" src="img/профитроли.jpg" class="rounded">
-                <h4 class="mt-3"><strong> Профитроли </strong></h4>
-                <h7 class="mt-2 p-3"> Авторские профитроли с заварным кремом</h7>
+                <img width="310" src="img/хлеб.jpg" class="rounded">
+                <h4 class="mt-3"><strong> Хлеб </strong></h4>
+                <h7 class="mt-2 p-3"> Хрустящий свежий белый багет</h7>
                 <h4 class="mt-3 "><strong> 200 ₽ </strong></h4>
 
                 <div class="mx-auto mt-4 mb-3 def-number-input number-input safari_only">
@@ -316,6 +293,7 @@
 
 
 <!-- Optional JavaScript -->
+<script src="js/script.js"></script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
