@@ -2,7 +2,6 @@ body {
     font-family: Circe;
 }
 
-
 .number-input input[type="number"] {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
@@ -79,7 +78,7 @@ body {
     color: #495057;
 }
 
-@media not all and (min-resolution:.001dpcm) {
+@media not all and (min-resolution: .001dpcm) {
     @supports (-webkit-appearance: none) and (stroke-color:transparent) {
 
         .number-input.def-number-input.safari_only button:before,
@@ -89,6 +88,10 @@ body {
     }
 }
 
-.bg-button{
+.bg-button {
     background-color: #363636;
+}
+
+a {
+    cursor: pointer;
 }
