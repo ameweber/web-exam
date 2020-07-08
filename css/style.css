@@ -89,9 +89,36 @@ body {
 }
 
 .bg-button {
-    background-color: #363636;
+    background-color: #99C7A4;
+    box-shadow: 15px 15px 40px rgba(101, 199, 134, 0.2);
 }
 
 a {
     cursor: pointer;
+}
+
+.footer-color{
+    background-color: #3F3B3B;
+    color: white;
+}
+
+.form-color{
+    background-color: #FCFCFC;
+}
+
+.item-shadow {
+    box-shadow: 14px 15px 60px rgba(85, 87, 101, 0.07);
+}
+
+.shadow {
+    box-shadow: 14px 15px 60px rgba(85, 87, 101, 0.07) !important;
+}
+
+
+.number-input.number-input {
+    border: none !important;
+}
+
+.number-input.number-input button.minus {
+    border: none !important;
 }
