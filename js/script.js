@@ -1,5 +1,44 @@
 "use strict"
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getArea() {
+    let areas = ["ЦАО", "ВАО"];
+    return areas[getRandomInt(0, 2)];
+}
+function getType() {
+    let areas = ["Тип 1", "Тип 2"];
+    return areas[getRandomInt(0, 2)];
+}
+function getDistricts() {
+    let dst = ["Арбат", "Тверской", "Гольяново"];
+    return dst[getRandomInt(0, 3)]
+}
+let objects = [];
+
+for (let i = 0; i < 200; i++) {
+    let obj = {};
+    obj.name = `Заведение ${i}`;
+    obj.id = i;
+    obj.admArea = getArea();
+    obj.district = getDistricts()
+    obj.address = `Улица Пушкина, дом Колотушкина ${i}`
+    obj.typeObject = getType();
+    obj.rate = getRandomInt(0, 1000);
+    obj.set_1 = getRandomInt(0, 100000);
+    obj.set_2 = getRandomInt(0, 100000);
+    obj.set_3 = getRandomInt(0, 100000);
+    obj.set_4 = getRandomInt(0, 100000);
+    obj.set_5 = getRandomInt(0, 100000);
+    obj.set_6 = getRandomInt(0, 100000);
+    obj.set_7 = getRandomInt(0, 100000);
+    obj.set_8 = getRandomInt(0, 100000);
+    obj.set_9 = getRandomInt(0, 100000);
+    obj.set_10 = getRandomInt(0, 100000);
+    objects.push(obj);
+}
 
 window.onload = function () {
     cafesParser();
@@ -11,8 +50,9 @@ async function cafesParser(page = 0) {
     let url = 'http://exam-2020-1-api.std-900.ist.mospolytech.ru/api/data1?api_key=60388bdf-cd64-4c54-b6e3-bb028aae72f6';
     let response = await fetch(url);
     if (response.ok) {
-
+    // if (true) {
         json = await response.json();
+        // json = await response.json();
 
         // отрисовываем фильтры
 
@@ -81,7 +121,7 @@ async function cafesParser(page = 0) {
             '                <td>' + cafes['typeObject'] + '</td>\n' +
             '                <td>' + cafes['address'] + '</td>\n' +
             '                <td class="float-right">\n' +
-            '                    <button type="submit" class="btn bg-button text-white px-5" id="' + cafes['id'] + '">Выбрать</button>\n' +
+            '                    <button type="submit" class="btn bg-button text-white px-5" id="' + cafes['id'] + '" onclick="cafeSelect(this)">Выбрать</button>\n' +
             '                </td>\n' +
             '            </tr>'
         );
@@ -108,6 +148,38 @@ async function cafesParser(page = 0) {
     }
 }
 
+function cafeSelect(that) {
+    //смотрим, есть ли активный, если да, то снимаем выбор
+    let prevActive = document.querySelector('.selectedCafe');
+    if (prevActive != null) {
+        prevActive.classList.remove('selectedCafe');
+        prevActive.innerHTML = ('Выбрать');
+    }
+
+    //присваиваем выбраному элементу класс и текст
+    that.className += ' selectedCafe';
+    that.innerHTML = 'Выбрано!';
+
+
+    //если есть кафе, получаем это кафе
+    let cafe = document.querySelector('.selectedCafe');
+    if (cafe) {
+        for (let i = 0; i < json.length; i++) {
+            if (json[i].id === parseInt(cafe.id)) {
+                cafe = json[i];
+            }
+        }
+    }
+}
+
+function order() {
+
+    let muffin = document.querySelector('#muffin');
+    let baget = document.querySelector('#baget');
+    let profitrol = document.querySelector('#pakora');
+    let contactless = document.querySelector('#contactless');
+    let onlyhot = document.querySelector('#onlyhot');
+}
 function openPage(that) {
     cafesParser(that.id);
 }

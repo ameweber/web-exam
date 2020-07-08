@@ -180,7 +180,7 @@
                 <div class="mx-auto mt-4 mb-3 def-number-input number-input safari_only">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                             class="minus"></button>
-                    <input class="quantity" min="0" name="quantity" value="1" type="number">
+                    <input class="quantity" min="0" name="quantity" value="1" type="number" data-price="200" id="profitrol">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                             class="plus"></button>
                 </div>
@@ -195,7 +195,7 @@
                 <div class="mx-auto mt-4 mb-3 def-number-input number-input safari_only">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                             class="minus"></button>
-                    <input class="quantity" min="0" name="quantity" value="1" type="number">
+                    <input class="quantity" min="0" name="quantity" value="1" type="number" data-price="560" id="muffin">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                             class="plus"></button>
                 </div>
@@ -210,7 +210,7 @@
                 <div class="mx-auto mt-4 mb-3 def-number-input number-input safari_only">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                             class="minus"></button>
-                    <input class="quantity" min="0" name="quantity" value="1" type="number">
+                    <input class="quantity" min="0" name="quantity" value="1" type="number" data-price="200" id="baget">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                             class="plus"></button>
                 </div>
@@ -224,16 +224,16 @@
     <div class="p-4 mb-4 rounded form-color" >
         <h2 class="mt-2 mb-4"><strong> Дополнительные опции </strong></h2>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Являюсь студентом ВУЗа
+            <input class="form-check-input" type="checkbox" value="" id="contactless">
+            <label class="form-check-label" for="contactless">
+                Бесконтактная доставка
             </label>
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Быстрая доставка
+            <input class="form-check-input" type="checkbox" value="" id="onlyhot">
+            <label class="form-check-label" for="onlyhot">
+                Только горячим
             </label>
         </div>
 
@@ -242,11 +242,11 @@
     <div class="p-4 mb-5 rounded form-color">
         <div class="row mt-3">
             <div class="col-md-6">
-                <h2 class="mt-2"> Итого: <strong> 1500 ₽</strong></h2>
+<!--                <h2 class="mt-2"> Итого: <strong> 1500 ₽</strong></h2>-->
             </div>
             <div class="col-md-6">
                 <button type="submit" class="btn bg-button text-white float-right px-5" data-toggle="modal"
-                        data-target="#exampleModal">Оформить заказ
+                        data-target="#exampleModal" onclick="order()">Оформить заказ
                 </button>
             </div>
         </div>
