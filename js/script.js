@@ -57,9 +57,8 @@ async function cafesParser(page = 0) {
         // json = await response.json();
         json = objects;
 
-        // отрисовываем фильтры
+        // фильтр
 
-        // лезем в json и собираем у всех административные округа, районы и типы
         let adminOkrugs = [], districts = [], types = [], sales = [];
         for (let i = 0; i < (json.length - 1); i++) {
             adminOkrugs[i] = json[i].admArea;
@@ -67,35 +66,34 @@ async function cafesParser(page = 0) {
             types[i] = json[i].typeObject;
         }
 
-        //выбираем только уникальные значения JS-методом Set
+        //выбираем только уникальные значения
         let uniqueAdminOkrugs = [...new Set(adminOkrugs)];
         let uniqueDistricts = [...new Set(districts)];
         let uniqueTypes = [...new Set(types)];
 
-        //удаляем значения с null
+
         uniqueAdminOkrugs = uniqueAdminOkrugs.filter(Boolean);
         uniqueDistricts = uniqueDistricts.filter(Boolean);
         uniqueTypes = uniqueTypes.filter(Boolean);
 
 
-        //заполняем переменные строками option с уникальными значениями
         let adminOkrugSelect, districtSelect, typesSelect;
         for (let i = 0; i < uniqueAdminOkrugs.length - 1; i++) {
             adminOkrugSelect += '<option>' + uniqueAdminOkrugs[i] + '</option>\n';
         }
-        //находим выпадающее меню по id и вставляем значения
+
         document.querySelector('#adminOkrug').innerHTML = adminOkrugSelect;
 
         for (let i = 0; i < uniqueDistricts.length; i++) {
             districtSelect += '<option>' + uniqueDistricts[i] + '</option>\n';
         }
-        //находим выпадающее меню по id и вставляем значения
+
         document.querySelector('#district').innerHTML = districtSelect;
 
         for (let i = 0; i < uniqueTypes.length; i++) {
             typesSelect += '<option>' + uniqueTypes[i] + '</option>\n';
         }
-        //находим выпадающее меню по id и вставляем значения
+
         document.querySelector('#type').innerHTML = typesSelect;
 
 
@@ -152,14 +150,14 @@ async function cafesParser(page = 0) {
 }
 
 function cafeSelect(that) {
-    //смотрим, есть ли активный, если да, то снимаем выбор
+
     let prevActive = document.querySelector('.selectedCafe');
     if (prevActive != null) {
         prevActive.classList.remove('selectedCafe');
         prevActive.innerHTML = ('Выбрать');
     }
 
-    //присваиваем выбраному элементу класс и текст
+
     that.className += ' selectedCafe';
     that.innerHTML = 'Выбрано!';
 
@@ -177,7 +175,6 @@ function cafeSelect(that) {
 
 function order() {
 
-    //если есть кафе, получаем json этого кафе
     let cafe = document.querySelector('.selectedCafe');
     if (cafe) {
         for (let i = 0; i < json.length; i++) {
@@ -203,10 +200,9 @@ function order() {
     let itogo = muffins + bagets + profitrols + delivery;
     let ifcold = itogo - (itogo * 0.3);
 
-    //очищаем форму заказа
     document.querySelector('.modal-body').innerHTML = '';
 
-    //собираем модальное окно
+    //вывод в модальное окно
     document.querySelector('.modal-body').innerHTML = '<h5><strong>Позиции заказа </strong></h5>\n';
 
     if (profitrol.value > 0) {
