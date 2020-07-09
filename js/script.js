@@ -9,11 +9,10 @@ let json;
 
 async function cafesParser(page = 0) {
     let url = 'http://exam-2020-1-api.std-900.ist.mospolytech.ru/api/data1?api_key=60388bdf-cd64-4c54-b6e3-bb028aae72f6';
-    // let response = await fetch(url);
-    // if (response.ok) {
+    let response = await fetch(url);
+    if (response.ok) {
     if (true) {
-        // json = await response.json();
-        json = objects;
+        json = await response.json();
 
         // фильтр
 
