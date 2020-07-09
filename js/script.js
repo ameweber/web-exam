@@ -11,11 +11,9 @@ async function cafesParser(page = 0) {
     let url = 'http://exam-2020-1-api.std-900.ist.mospolytech.ru/api/data1?api_key=60388bdf-cd64-4c54-b6e3-bb028aae72f6';
     let response = await fetch(url);
     if (response.ok) {
-    if (true) {
         json = await response.json();
 
         // фильтр
-
         let adminOkrugs = [], districts = [], types = [], sales = [];
         for (let i = 0; i < (json.length - 1); i++) {
             adminOkrugs[i] = json[i].admArea;
