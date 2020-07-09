@@ -93,6 +93,10 @@ body {
     box-shadow: 15px 15px 40px rgba(101, 199, 134, 0.2);
 }
 
+.bg-button:hover {
+    box-shadow: 5px 5px 40px rgba(101, 199, 134, 0.5);
+}
+
 a {
     cursor: pointer;
 }
@@ -103,7 +107,7 @@ a {
 }
 
 .form-color{
-    background-color: #FCFCFC;
+    background-color: #f9f8f8;
 }
 
 .item-shadow {
