@@ -32,7 +32,7 @@
         </div>
     </nav>
 
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div id="success" class="alert alert-success alert-dismissible fade show hidden" role="alert">
         <strong>Заказ оформлен!</strong> Спасибо, ожидайте курьера.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -289,8 +289,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                            <button type="button" class="btn btn-primary">Подтвердить</button>
+                            <button type="button" class="btn bg-secondary text-white float-right px-5" data-dismiss="modal">Отмена</button>
+                            <a href="button" class="btn bg-button text-white float-right px-5" data-dismiss="modal" onclick="orderOk()">Подтвердить</a>
                         </div>
                     </div>
                 </div>

@@ -123,3 +123,6 @@ a {
     border: none !important;
 }
 
+.hidden{
+    display: none;
+}

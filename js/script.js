@@ -8,14 +8,17 @@ function getArea() {
     let areas = ["ЦАО", "ВАО"];
     return areas[getRandomInt(0, 2)];
 }
+
 function getType() {
     let areas = ["Тип 1", "Тип 2"];
     return areas[getRandomInt(0, 2)];
 }
+
 function getDistricts() {
     let dst = ["Арбат", "Тверской", "Гольяново"];
     return dst[getRandomInt(0, 3)]
 }
+
 let objects = [];
 
 for (let i = 0; i < 200; i++) {
@@ -205,7 +208,7 @@ function order() {
     //собираем модальное окно
     document.querySelector('.modal-body').innerHTML = '<h5><strong>Позиции заказа </strong></h5>\n';
 
-    if(profitrol){
+    if (profitrol) {
         document.querySelector('.modal-body').innerHTML +=
             '                            <div class="mb-3 mt-3 shadow-sm p-3 mb-5 bg-white rounded">\n' +
             '                                <div class="row mt-2">\n' +
@@ -216,15 +219,15 @@ function order() {
             '                                        <h5 class=""><strong> Профитроли</strong></h5>\n' +
             '                                    </div>\n' +
             '                                    <div class="col-md-3">\n' +
-            '                                        <h6 class=" text-muted"> '+profitrol.value+'х '+profitrol.getAttribute('data-price')+' ₽</h6>\n' +
+            '                                        <h6 class=" text-muted"> ' + profitrol.value + 'х ' + profitrol.getAttribute('data-price') + ' ₽</h6>\n' +
             '                                    </div>\n' +
             '                                    <div class="col-md-3">\n' +
-            '                                        <h5 class="float-right mr-2"><strong>'+profitrols+' ₽ </strong></h5>\n' +
+            '                                        <h5 class="float-right mr-2"><strong>' + profitrols + ' ₽ </strong></h5>\n' +
             '                                    </div>\n' +
             '                                </div>\n' +
             '                            </div>\n'
     }
-    if(muffin){
+    if (muffin) {
         document.querySelector('.modal-body').innerHTML +=
             '                            <div class="mb-3 mt-3 shadow-sm p-3 mb-5 bg-white rounded">\n' +
             '                                <div class="row mt-2">\n' +
@@ -235,51 +238,51 @@ function order() {
             '                                        <h5 class=""><strong> Маффины</strong></h5>\n' +
             '                                    </div>\n' +
             '                                    <div class="col-md-3">\n' +
-            '                                        <h6 class=" text-muted"> '+muffin.value+'х '+muffin.getAttribute('data-price')+' ₽</h6>\n' +
+            '                                        <h6 class=" text-muted"> ' + muffin.value + 'х ' + muffin.getAttribute('data-price') + ' ₽</h6>\n' +
             '                                    </div>\n' +
             '                                    <div class="col-md-3">\n' +
-            '                                        <h5 class="float-right mr-2"><strong>'+muffins+' ₽ </strong></h5>\n' +
+            '                                        <h5 class="float-right mr-2"><strong>' + muffins + ' ₽ </strong></h5>\n' +
             '                                    </div>\n' +
             '                                </div>\n' +
             '                            </div>\n'
     }
-    if(baget){
+    if (baget) {
         document.querySelector('.modal-body').innerHTML +=
             '                            <div class="mb-3 mt-3 shadow-sm p-3 mb-5 bg-white rounded">\n' +
             '                                <div class="row mt-2">\n' +
             '                                    <div class="col-md-2">\n' +
-            '                                        <img width="100" src="img/маффины.jpg" class="rounded">\n' +
+            '                                        <img width="100" src="img/хлеб.jpg" class="rounded">\n' +
             '                                    </div>\n' +
             '                                    <div class="col-md-4">\n' +
             '                                        <h5 class=""><strong> Багеты</strong></h5>\n' +
             '                                    </div>\n' +
             '                                    <div class="col-md-3">\n' +
-            '                                        <h6 class=" text-muted"> '+bagets.value+'х '+muffin.getAttribute('data-price')+' ₽</h6>\n' +
+            '                                        <h6 class=" text-muted"> ' + baget.value + 'х ' + baget.getAttribute('data-price') + ' ₽</h6>\n' +
             '                                    </div>\n' +
             '                                    <div class="col-md-3">\n' +
-            '                                        <h5 class="float-right mr-2"><strong>'+bagets+' ₽ </strong></h5>\n' +
+            '                                        <h5 class="float-right mr-2"><strong>' + bagets + ' ₽ </strong></h5>\n' +
             '                                    </div>\n' +
             '                                </div>\n' +
             '                            </div>\n'
     }
 
-        '\n' +
+    document.querySelector('.modal-body').innerHTML += '\n' +
         '                            <h5><strong>Дополнительные опции </strong></h5>\n' +
         '                            <div class="mb-4 mt-3 border-bottom">\n' +
         '                                <div class="row mt-2">\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h6 class=""><strong> Студент ВУЗа:</strong></h6>\n' +
+        '                                        <h6 class=""><strong> Бесконтактная доставка:</strong></h6>\n' +
         '                                    </div>\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h6 class="float-right mr-2"> -10%</h6>\n' +
+        '                                        <h6 class="float-right mr-2"> ' + (contactless.checked ? 'Да' : 'Нет') + '</h6>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
         '                                <div class="row mt-2">\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h6 class=""><strong> Быстрая доставка</strong></h6>\n' +
+        '                                        <h6 class=""><strong> Только горячим:</strong></h6>\n' +
         '                                    </div>\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h6 class="float-right mr-2"> +20%</h6>\n' +
+        '                                        <h6 class="float-right mr-2"> ' + (onlyhot.checked ? 'Да' : 'Нет') + '</h6>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
         '                            </div>\n' +
@@ -291,7 +294,7 @@ function order() {
         '                                        <h6 class=""><strong> Название</strong></h6>\n' +
         '                                    </div>\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h6 class="float-right mr-2"> Столовка</h6>\n' +
+        '                                        <h6 class="float-right mr-2"> ' + (cafe ? cafe.name : '') + '</h6>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
         '                                <div class="row mt-2">\n' +
@@ -299,7 +302,7 @@ function order() {
         '                                        <h6 class=""><strong> Административный округ</strong></h6>\n' +
         '                                    </div>\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h6 class="float-right mr-2"> ВАО</h6>\n' +
+        '                                        <h6 class="float-right mr-2"> ' + (cafe ? cafe.admArea : '') + '</h6>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
         '\n' +
@@ -308,7 +311,7 @@ function order() {
         '                                        <h6 class=""><strong> Район</strong></h6>\n' +
         '                                    </div>\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h6 class="float-right mr-2"> Алексеевский</h6>\n' +
+        '                                        <h6 class="float-right mr-2"> ' + (cafe ? cafe.district : '') + '</h6>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
         '\n' +
@@ -317,7 +320,7 @@ function order() {
         '                                        <h6 class=""><strong> Адрес</strong></h6>\n' +
         '                                    </div>\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h6 class="float-right mr-2 text-muted"> ул. Пушкина, дом Калатушкина</h6>\n' +
+        '                                        <h6 class="float-right mr-2 text-muted"> ' + (cafe ? cafe.address : '') + '</h6>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
         '\n' +
@@ -326,7 +329,7 @@ function order() {
         '                                        <h6 class=""><strong> Рейтинг</strong></h6>\n' +
         '                                    </div>\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h6 class="float-right mr-2"><strong>4.6</strong></h6>\n' +
+        '                                        <h6 class="float-right mr-2"><strong>' + (cafe ? cafe.rate : '') + '</strong></h6>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
         '                            </div>\n' +
@@ -376,15 +379,22 @@ function order() {
         '                                        <h6 class=""><strong> Итого</strong></h6>\n' +
         '                                    </div>\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h5 class="float-right mr-2"><strong>1500 ₽</strong></h5>\n' +
+        '                                        <h5 class="float-right mr-2"><strong>' +
+        itogo
+        + '</strong></h5>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
         '                            </div>';
 
 
 }
+
 function openPage(that) {
     cafesParser(that.id);
+}
+
+function orderOk() {
+    document.querySelector('#success').classList.remove('hidden');
 }
 
 
