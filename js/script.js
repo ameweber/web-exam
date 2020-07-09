@@ -48,11 +48,11 @@ let json;
 
 async function cafesParser(page = 0) {
     let url = 'http://exam-2020-1-api.std-900.ist.mospolytech.ru/api/data1?api_key=60388bdf-cd64-4c54-b6e3-bb028aae72f6';
-    let response = await fetch(url);
-    if (response.ok) {
-    // if (true) {
-        json = await response.json();
+    // let response = await fetch(url);
+    // if (response.ok) {
+    if (true) {
         // json = await response.json();
+        json = objects;
 
         // отрисовываем фильтры
 
@@ -161,7 +161,20 @@ function cafeSelect(that) {
     that.innerHTML = 'Выбрано!';
 
 
-    //если есть кафе, получаем это кафе
+    // //если есть кафе, получаем это кафе
+    // let cafe = document.querySelector('.selectedCafe');
+    // if (cafe) {
+    //     for (let i = 0; i < json.length; i++) {
+    //         if (json[i].id === parseInt(cafe.id)) {
+    //             cafe = json[i];
+    //         }
+    //     }
+    // }
+}
+
+function order() {
+
+    //если есть кафе, получаем json этого кафе
     let cafe = document.querySelector('.selectedCafe');
     if (cafe) {
         for (let i = 0; i < json.length; i++) {
@@ -170,15 +183,205 @@ function cafeSelect(that) {
             }
         }
     }
-}
 
-function order() {
 
+    let delivery = 250;
+    //получаем значения выбранных позиций меню и дополнительных опций
     let muffin = document.querySelector('#muffin');
     let baget = document.querySelector('#baget');
-    let profitrol = document.querySelector('#pakora');
+    let profitrol = document.querySelector('#profitrol');
     let contactless = document.querySelector('#contactless');
     let onlyhot = document.querySelector('#onlyhot');
+    let muffins = (muffin.value * muffin.getAttribute('data-price'));
+    let bagets = (baget.value * baget.getAttribute('data-price'));
+    let profitrols = (profitrol.value * profitrol.getAttribute('data-price'));
+
+
+    let itogo = muffins + bagets + profitrols + delivery;
+
+    //очищаем форму заказа
+    document.querySelector('.modal-body').innerHTML = '';
+
+    //собираем модальное окно
+    document.querySelector('.modal-body').innerHTML = '<h5><strong>Позиции заказа </strong></h5>\n';
+
+    if(profitrol){
+        document.querySelector('.modal-body').innerHTML +=
+            '                            <div class="mb-3 mt-3 shadow-sm p-3 mb-5 bg-white rounded">\n' +
+            '                                <div class="row mt-2">\n' +
+            '                                    <div class="col-md-2">\n' +
+            '                                        <img width="100" src="img/профитроли.jpg" class="rounded">\n' +
+            '                                    </div>\n' +
+            '                                    <div class="col-md-4">\n' +
+            '                                        <h5 class=""><strong> Профитроли</strong></h5>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="col-md-3">\n' +
+            '                                        <h6 class=" text-muted"> '+profitrol.value+'х '+profitrol.getAttribute('data-price')+' ₽</h6>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="col-md-3">\n' +
+            '                                        <h5 class="float-right mr-2"><strong>'+profitrols+' ₽ </strong></h5>\n' +
+            '                                    </div>\n' +
+            '                                </div>\n' +
+            '                            </div>\n'
+    }
+    if(muffin){
+        document.querySelector('.modal-body').innerHTML +=
+            '                            <div class="mb-3 mt-3 shadow-sm p-3 mb-5 bg-white rounded">\n' +
+            '                                <div class="row mt-2">\n' +
+            '                                    <div class="col-md-2">\n' +
+            '                                        <img width="100" src="img/маффины.jpg" class="rounded">\n' +
+            '                                    </div>\n' +
+            '                                    <div class="col-md-4">\n' +
+            '                                        <h5 class=""><strong> Маффины</strong></h5>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="col-md-3">\n' +
+            '                                        <h6 class=" text-muted"> '+muffin.value+'х '+muffin.getAttribute('data-price')+' ₽</h6>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="col-md-3">\n' +
+            '                                        <h5 class="float-right mr-2"><strong>'+muffins+' ₽ </strong></h5>\n' +
+            '                                    </div>\n' +
+            '                                </div>\n' +
+            '                            </div>\n'
+    }
+    if(baget){
+        document.querySelector('.modal-body').innerHTML +=
+            '                            <div class="mb-3 mt-3 shadow-sm p-3 mb-5 bg-white rounded">\n' +
+            '                                <div class="row mt-2">\n' +
+            '                                    <div class="col-md-2">\n' +
+            '                                        <img width="100" src="img/маффины.jpg" class="rounded">\n' +
+            '                                    </div>\n' +
+            '                                    <div class="col-md-4">\n' +
+            '                                        <h5 class=""><strong> Багеты</strong></h5>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="col-md-3">\n' +
+            '                                        <h6 class=" text-muted"> '+bagets.value+'х '+muffin.getAttribute('data-price')+' ₽</h6>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="col-md-3">\n' +
+            '                                        <h5 class="float-right mr-2"><strong>'+bagets+' ₽ </strong></h5>\n' +
+            '                                    </div>\n' +
+            '                                </div>\n' +
+            '                            </div>\n'
+    }
+
+        '\n' +
+        '                            <h5><strong>Дополнительные опции </strong></h5>\n' +
+        '                            <div class="mb-4 mt-3 border-bottom">\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Студент ВУЗа:</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class="float-right mr-2"> -10%</h6>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Быстрая доставка</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class="float-right mr-2"> +20%</h6>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '                            </div>\n' +
+        '\n' +
+        '                            <h5><strong>Информация о предприятии </strong></h5>\n' +
+        '                            <div class="mb-4 mt-3 border-bottom">\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Название</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class="float-right mr-2"> Столовка</h6>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Административный округ</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class="float-right mr-2"> ВАО</h6>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Район</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class="float-right mr-2"> Алексеевский</h6>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Адрес</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class="float-right mr-2 text-muted"> ул. Пушкина, дом Калатушкина</h6>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Рейтинг</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class="float-right mr-2"><strong>4.6</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '                            </div>\n' +
+        '\n' +
+        '                            <h5><strong>Доставка</strong></h5>\n' +
+        '                            <div class="mb-3 mt-4">\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Зона доставки:</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <select class="form-control">\n' +
+        '                                            <option>Первая зона</option>\n' +
+        '                                        </select>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Адрес доставки:</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <textarea class="form-control" id="exampleFormControlTextarea1"\n' +
+        '                                                  rows="3"></textarea>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Стоимость доставки:</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class="float-right mr-2"><strong>200 ₽</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> ФИО получателя:</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <input class="form-control" type="text" placeholder="">\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '\n' +
+        '                                <div class="row mt-2">\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h6 class=""><strong> Итого</strong></h6>\n' +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h5 class="float-right mr-2"><strong>1500 ₽</strong></h5>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '                            </div>';
+
+
 }
 function openPage(that) {
     cafesParser(that.id);
