@@ -188,7 +188,7 @@ function order() {
     }
 
 
-    let delivery = 250;
+    let delivery = 200;
     //получаем значения выбранных позиций меню и дополнительных опций
     let muffin = document.querySelector('#muffin');
     let baget = document.querySelector('#baget');
@@ -201,6 +201,7 @@ function order() {
 
 
     let itogo = muffins + bagets + profitrols + delivery;
+    let ifcold = itogo - (itogo * 0.3);
 
     //очищаем форму заказа
     document.querySelector('.modal-body').innerHTML = '';
@@ -208,7 +209,7 @@ function order() {
     //собираем модальное окно
     document.querySelector('.modal-body').innerHTML = '<h5><strong>Позиции заказа </strong></h5>\n';
 
-    if (profitrol) {
+    if (profitrol.value > 0) {
         document.querySelector('.modal-body').innerHTML +=
             '                            <div class="mb-3 mt-3 shadow-sm p-3 mb-5 bg-white rounded">\n' +
             '                                <div class="row mt-2">\n' +
@@ -227,7 +228,7 @@ function order() {
             '                                </div>\n' +
             '                            </div>\n'
     }
-    if (muffin) {
+    if (muffin.value > 0) {
         document.querySelector('.modal-body').innerHTML +=
             '                            <div class="mb-3 mt-3 shadow-sm p-3 mb-5 bg-white rounded">\n' +
             '                                <div class="row mt-2">\n' +
@@ -246,7 +247,7 @@ function order() {
             '                                </div>\n' +
             '                            </div>\n'
     }
-    if (baget) {
+    if (baget.value > 0) {
         document.querySelector('.modal-body').innerHTML +=
             '                            <div class="mb-3 mt-3 shadow-sm p-3 mb-5 bg-white rounded">\n' +
             '                                <div class="row mt-2">\n' +
@@ -254,7 +255,7 @@ function order() {
             '                                        <img width="100" src="img/хлеб.jpg" class="rounded">\n' +
             '                                    </div>\n' +
             '                                    <div class="col-md-4">\n' +
-            '                                        <h5 class=""><strong> Багеты</strong></h5>\n' +
+            '                                        <h5 class=""><strong> Багет</strong></h5>\n' +
             '                                    </div>\n' +
             '                                    <div class="col-md-3">\n' +
             '                                        <h6 class=" text-muted"> ' + baget.value + 'х ' + baget.getAttribute('data-price') + ' ₽</h6>\n' +
@@ -376,15 +377,26 @@ function order() {
         '\n' +
         '                                <div class="row mt-2">\n' +
         '                                    <div class="col-md-6">\n' +
-        '                                        <h6 class=""><strong> Итого</strong></h6>\n' +
+        '                                        <h6 class=""><strong> Итого</strong></h6><br>\n' +
         '                                    </div>\n' +
         '                                    <div class="col-md-6">\n' +
         '                                        <h5 class="float-right mr-2"><strong>' +
         itogo
-        + '</strong></h5>\n' +
+        + ' ₽</strong></h5>' +
         '                                    </div>\n' +
         '                                </div>\n' +
-        '                            </div>';
+        '                            </div>'+
+        '                                <div class="row">\n' +
+        '                                    <div class="col-md-6">\n' +
+        (onlyhot.checked ? ('Если заказ придёт холодным, он будет стоить Вам :') : '') +
+        '                                    </div>\n' +
+        '                                    <div class="col-md-6">\n' +
+        '                                        <h5 class="float-right mr-2"><strong>' +
+        '</strong></h5>' +(onlyhot.checked ? ifcold+' ₽' : '') +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '                            </div>'
+    ;
 
 
 }
